@@ -150,6 +150,15 @@
         .pulse-slow {
             animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
+
+        .faq-answer {
+            max-height: 0;
+            transition: max-height 0.3s ease-in-out;
+        }
+
+        .faq-answer.faq-open {
+            max-height: 500px;
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-white to-blue-50">
@@ -597,30 +606,32 @@
             });
         });
 
-        // FAQ Accordion
+        // FAQ Accordion - Simpler approach
         const faqQuestions = document.querySelectorAll('.faq-question');
         
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                const icon = question.querySelector('.faq-icon');
-                const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+        faqQuestions.forEach((question, index) => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('.faq-icon');
                 
-                // Close all other answers
+                // Check if currently open
+                const isOpen = answer.classList.contains('faq-open');
+                
+                // Close all FAQs
                 document.querySelectorAll('.faq-answer').forEach(item => {
+                    item.classList.remove('faq-open');
                     item.style.maxHeight = '0px';
                 });
+                
                 document.querySelectorAll('.faq-icon').forEach(item => {
                     item.classList.remove('rotate-180');
                 });
                 
-                // Toggle current answer
+                // If it wasn't open, open it
                 if (!isOpen) {
-                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    answer.classList.add('faq-open');
+                    answer.style.maxHeight = '500px'; // Set a high enough max-height
                     icon.classList.add('rotate-180');
-                } else {
-                    answer.style.maxHeight = '0px';
-                    icon.classList.remove('rotate-180');
                 }
             });
         });
