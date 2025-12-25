@@ -160,11 +160,30 @@
             <div class="flex items-center bg-white">
                 <img src="https://stephen0099git.github.io/pillar-cloud-healthcare-site/images/4c2aa796-b37f-432e-8a06-ccbf98d87952.png" alt="Pillar of Cloud Healthcare Logo" class="h-16 md:h-28 lg:h-32 w-auto" style="filter: contrast(1.1) brightness(1.05);">
             </div>
+            
+            <!-- Desktop Menu -->
             <div class="hidden md:flex items-center gap-8 pr-4">
                 <a href="#about" class="text-slate-800 hover:text-sky-600 transition-colors font-medium text-lg">About</a>
                 <a href="#services" class="text-slate-800 hover:text-sky-600 transition-colors font-medium text-lg">Services</a>
                 <a href="#contact" class="text-slate-800 hover:text-sky-600 transition-colors font-medium text-lg">Contact</a>
                 <a href="tel:+16143772019" class="bg-sky-500 hover:bg-sky-600 text-white px-8 py-3 rounded-full font-bold transition-all text-lg">Call Now</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-slate-800 hover:text-sky-600 p-2 mr-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="flex flex-col py-4">
+                <a href="#about" class="mobile-menu-link text-slate-800 hover:bg-sky-50 hover:text-sky-600 px-6 py-3 font-medium text-lg transition-colors">About</a>
+                <a href="#services" class="mobile-menu-link text-slate-800 hover:bg-sky-50 hover:text-sky-600 px-6 py-3 font-medium text-lg transition-colors">Services</a>
+                <a href="#contact" class="mobile-menu-link text-slate-800 hover:bg-sky-50 hover:text-sky-600 px-6 py-3 font-medium text-lg transition-colors">Contact</a>
+                <a href="tel:+16143772019" class="bg-sky-500 hover:bg-sky-600 text-white px-6 py-3 mx-6 mt-2 rounded-full font-bold text-center text-lg">Call Now</a>
             </div>
         </div>
     </nav>
@@ -559,6 +578,22 @@
 
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close menu when clicking a link
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
         
         // Add scroll animation
         const observerOptions = {
