@@ -526,7 +526,7 @@
         <div class="bg-gradient-to-br from-white to-sky-50 rounded-2xl shadow-2xl p-8 md:p-12 border-2 border-sky-100">
           <h3 class="text-3xl font-bold text-center text-slate-800 mb-6">Send Us a Message</h3>
           <p class="text-center text-slate-600 mb-8">
-            Have questions? Fill out the form below and we’ll get back to you as soon as possible.
+            Have questions? Fill out the form below and we'll get back to you as soon as possible.
           </p>
 
           <form id="contact-form" class="space-y-6">
@@ -683,7 +683,7 @@
                 </button>
                 <div class="faq-answer">
                     <div class="px-6 pb-5 text-slate-600 leading-relaxed">
-                        Our agency is guided by faith and driven by compassion. We integrate Christian values into our care approach, emphasizing dignity, respect, and service to others. Our core values include Faith, Compassion, Integrity, Excellence, Dignity, and Service—reflecting God’s care in every service we provide.
+                        Our agency is guided by faith and driven by compassion. We integrate Christian values into our care approach, emphasizing dignity, respect, and service to others. Our core values include Faith, Compassion, Integrity, Excellence, Dignity, and Service—reflecting God's care in every service we provide.
                     </div>
                 </div>
             </div>
@@ -729,6 +729,14 @@
   </footer>
 
   <script>
+    // ========================================
+    // 🔝 ALWAYS SCROLL TO TOP ON PAGE REFRESH
+    // ========================================
+    if (window.location.hash) {
+        window.history.replaceState(null, null, window.location.pathname);
+        window.scrollTo(0, 0);
+    }
+
     document.getElementById("year").textContent = new Date().getFullYear();
 
     // Mobile menu toggle
